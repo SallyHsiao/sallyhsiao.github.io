@@ -719,3 +719,61 @@ function playIntro() {
 }
 
 playIntro();
+
+const curiositySection = document.querySelector(".curiosity");
+if (curiositySection) {
+  const curiosityText = curiositySection.querySelector(".curiosity__typed");
+  const curiosityMessage = curiosityText.textContent;
+  const curiosityBubbles = curiositySection.querySelectorAll(".curiosity__bubble");
+  let curiosityStarted = false;
+
+  const startCuriosity = () => {
+    if (curiosityStarted) return;
+    curiosityStarted = true;
+    curiositySection.classList.add("is-visible");
+    window.setTimeout(() => curiositySection.classList.add("has-entered"), 1350);
+
+    if (reduceMotion.matches) return;
+    curiositySection.classList.add("is-typing");
+    let character = 0;
+    const typeNext = () => {
+      curiosityText.textContent = curiosityMessage.slice(0, character + 1);
+      character += 1;
+      if (character < curiosityMessage.length) {
+        window.setTimeout(typeNext, 82);
+      } else {
+        window.setTimeout(() => curiositySection.classList.remove("is-typing"), 850);
+      }
+    };
+    window.setTimeout(typeNext, 200);
+  };
+
+  if (!reduceMotion.matches) {
+    curiositySection.classList.add("is-enhanced");
+    curiosityText.textContent = "";
+  }
+
+  if ("IntersectionObserver" in window) {
+    const curiosityObserver = new IntersectionObserver((entries, observer) => {
+      if (!entries[0]?.isIntersecting) return;
+      startCuriosity();
+      observer.disconnect();
+    }, { threshold: 0.18 });
+    curiosityObserver.observe(curiositySection);
+  } else {
+    startCuriosity();
+  }
+
+  curiosityBubbles.forEach((bubble) => {
+    bubble.addEventListener("pointermove", (event) => {
+      if (reduceMotion.matches) return;
+      const bounds = bubble.getBoundingClientRect();
+      bubble.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
+      bubble.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
+    });
+    bubble.addEventListener("pointerleave", () => {
+      bubble.style.removeProperty("--pointer-x");
+      bubble.style.removeProperty("--pointer-y");
+    });
+  });
+}
