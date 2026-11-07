@@ -2215,6 +2215,123 @@ a.research-list__entry:focus-visible .research-list__title::after {
   line-height: 1.7;
 }
 
+.tourism-measures,
+.tourism-eye {
+  width: min(1180px, 100%);
+  margin: 0 auto clamp(64px, 9vw, 112px);
+}
+
+.tourism-measures__routes,
+.tourism-eye__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 30px);
+  margin-top: clamp(30px, 4vw, 50px);
+}
+
+.tourism-measures__route,
+.tourism-eye__grid article {
+  min-width: 0;
+  padding: clamp(26px, 3vw, 42px);
+  border: 1px solid rgba(19, 94, 103, 0.14);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #eef9f8, #fff);
+  box-shadow: 0 18px 44px rgba(26, 67, 79, 0.07);
+}
+
+.tourism-measures__route--peripheral,
+.tourism-eye__grid article:nth-child(2) {
+  background: linear-gradient(145deg, #f9f0fa, #fff);
+}
+
+.tourism-measures__route h5,
+.tourism-eye__grid h5 {
+  margin: 8px 0 16px;
+  color: #173d50;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.13;
+}
+
+.tourism-measures__route > p:not(.eyebrow),
+.tourism-measures__comparison {
+  color: #4b5962;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.tourism-measures__route ul {
+  display: grid;
+  gap: 10px;
+  margin: 23px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tourism-measures__route li {
+  padding: 12px 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #394b54;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tourism-measures__route li strong {
+  margin-right: 9px;
+  color: #126e77;
+}
+
+.tourism-measures__comparison {
+  margin: 20px 0 0;
+  padding: 20px 25px;
+  border-left: 4px solid #7659a4;
+  border-radius: 5px 15px 15px 5px;
+  background: #f5f0fb;
+}
+
+.tourism-eye__grid dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.tourism-eye__grid dl > div {
+  padding: 15px 0;
+  border-top: 1px solid rgba(19, 94, 103, 0.14);
+}
+
+.tourism-eye__grid dt {
+  color: #155e6c;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.tourism-eye__grid dd {
+  margin: 5px 0 0;
+  color: #56636b;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.case-study__figure.tourism-diagram {
+  width: min(1180px, 100%);
+  margin: 0 auto clamp(64px, 9vw, 112px);
+}
+
+.case-study__figure.tourism-variables {
+  width: min(1420px, 100%);
+  margin: clamp(64px, 9vw, 112px) auto;
+}
+
+@media (max-width: 760px) {
+  .tourism-measures__routes,
+  .tourism-eye__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .case-study__figures {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
@@ -2335,8 +2452,8 @@ a.research-list__entry:focus-visible .research-list__title::after {
 
 .project-card--current-research h3 {
   color: #122d4a;
-  font-size: clamp(2rem, 3.15vw, 3.7rem);
-  line-height: 1.01;
+  font-size: clamp(1.85rem, 2.8vw, 3rem);
+  line-height: 1.08;
 }
 
 .project-card--current-research .case-study__intro > .eyebrow {
@@ -2371,10 +2488,10 @@ a.research-list__entry:focus-visible .research-list__title::after {
   margin: 0;
   color: var(--current-navy);
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: clamp(2.4rem, 5vw, 5.1rem);
+  font-size: clamp(2rem, 3.4vw, 3.7rem);
   font-weight: 400;
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1.08;
 }
 
 .current-research__lead {
@@ -2433,6 +2550,57 @@ a.research-list__entry:focus-visible .research-list__title::after {
   color: #58646d;
   font-size: 0.98rem;
   line-height: 1.68;
+}
+
+.current-research__background {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 38px;
+}
+
+.current-research__background article {
+  padding: clamp(23px, 2.8vw, 34px);
+  border: 1px solid var(--current-line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.current-research__background article:last-child {
+  grid-column: 1 / -1;
+  background: linear-gradient(115deg, #eaf5f4, #f5f9fc);
+}
+
+.current-research__background span {
+  color: var(--current-teal);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.current-research__background h5 {
+  margin: 13px 0 0;
+  color: var(--current-navy);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  font-weight: 400;
+}
+
+.current-research__background p {
+  margin: 11px 0 0;
+  color: #4e5d67;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 700px) {
+  .current-research__background {
+    grid-template-columns: 1fr;
+  }
+
+  .current-research__background article:last-child {
+    grid-column: auto;
+  }
 }
 
 .current-research__diagram {
