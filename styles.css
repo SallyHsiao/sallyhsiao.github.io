@@ -1880,7 +1880,7 @@ a.research-list__entry:focus-visible .research-list__title::after {
 
 .project-feature__intro {
   display: grid;
-  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
 }
 
@@ -1898,13 +1898,14 @@ a.research-list__entry:focus-visible .research-list__title::after {
   transition: transform 700ms cubic-bezier(0.18, 0.7, 0.2, 1);
 }
 
-.project-feature__image--award-cover {
-  display: grid;
-  place-items: center;
+.project-feature__image.project-feature__image--award-cover {
+  min-height: 0;
   background: #f8f3ea;
 }
 
 .project-feature__image--award-cover img {
+  width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
 }
@@ -2325,9 +2326,76 @@ a.research-list__entry:focus-visible .research-list__title::after {
   margin: clamp(64px, 9vw, 112px) auto;
 }
 
+.tourism-cnn {
+  width: min(1180px, 100%);
+  margin: 0 auto clamp(70px, 9vw, 120px);
+}
+
+.tourism-cnn__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 30px);
+  margin-top: clamp(30px, 4vw, 50px);
+}
+
+.tourism-cnn__grid article {
+  min-width: 0;
+  padding: clamp(27px, 3vw, 42px);
+  border: 1px solid rgba(22, 101, 108, 0.15);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #eef7f8, #fff 65%);
+  box-shadow: 0 18px 44px rgba(26, 67, 79, 0.07);
+}
+
+.tourism-cnn__grid article:nth-child(2) {
+  background: linear-gradient(145deg, #f4f0fa, #fff 65%);
+}
+
+.tourism-cnn__grid span {
+  color: #167783;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tourism-cnn__grid h5 {
+  margin: 13px 0 18px;
+  color: #173d50;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.tourism-cnn__grid p,
+.tourism-cnn__takeaway {
+  color: #4b5962;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.tourism-cnn__grid p + p {
+  margin-top: 18px;
+}
+
+.tourism-cnn__takeaway {
+  margin: 20px 0 0;
+  padding: 22px 26px;
+  border-left: 4px solid #16808a;
+  border-radius: 5px 16px 16px 5px;
+  background: #edf8f7;
+}
+
+.tourism-cnn__takeaway strong {
+  margin-right: 8px;
+  color: #155961;
+}
+
 @media (max-width: 760px) {
   .tourism-measures__routes,
-  .tourism-eye__grid {
+  .tourism-eye__grid,
+  .tourism-cnn__grid {
     grid-template-columns: 1fr;
   }
 }
